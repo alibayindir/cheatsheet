@@ -3,7 +3,7 @@
  
 ### Update all downloaded docker images
 ````
-docker images |grep -v REPOSITORY|awk '{print $1}'|xargs -L1 docker pull
+docker images |grep -v REPOSITORY |awk '{print $1":"$2}' |xargs -L1 docker pull
 ````
 ### Detect all outgoing port blocking
 ````
