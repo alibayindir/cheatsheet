@@ -13,3 +13,7 @@ time nmap -p- portquiz.net | grep -i open
 ````
 find ./ -type f -exec sed -i 's/foo/bar/g' {} \;
 ````
+### Create systemd-boot entry for root at /dev/sda2
+````
+string=$"title\tArch Linux\nlinux\t/vmlinuz-linux\ninitrd\t/intel-ucode.img\ninitrd\t/initramfs-linux.img\n" string2="options root=" string3=$(lsblk -Po UUID /dev/sda2 | tr -d '"') && echo -e $string$string2$string3 rw
+````
